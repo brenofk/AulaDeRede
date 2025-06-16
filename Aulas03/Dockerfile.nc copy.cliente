@@ -1,0 +1,10 @@
+FROM ubuntu
+
+RUN apt update
+RUN apt -y install netcat-openbsd
+
+CMD ["nc", "-l", "10100"]
+
+
+
+

@@ -1,0 +1,40 @@
+services:
+  # counter:
+    # image:  hello-world
+    # build: .
+    # environment:
+    # - NUMERO
+    # - NOME
+
+  postgres:
+    image: postgres
+
+    environment:
+      - POSTGRES_PASSWORD
+      # - POSTGRES_USER
+      - POSTGRES_DB
+    ports:
+      - 54320:5432
+
+  adminer:
+    image: adminer
+    ports: 
+    - 8080:8080
+
+  mysql:
+    image: mysql
+
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
+      # O container do MySQL exige que um dos três parâmetros seja definido para inicializar corretamente o banco de dados:
+      # MYSQL_ROOT_PASSWORD
+      # MYSQL_ALLOW_EMPTY_PASSWORD
+      # MYSQL_RANDOM_ROOT_PASSWORD
+
+      # No caso, eu defini para inicializar o ROOT PASSWORD.
+    ports: 
+    - 3307:3306

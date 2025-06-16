@@ -1,0 +1,13 @@
+services:
+  counter:
+    image: brenofk/contador
+    container_name: contador
+
+  watchtower:
+    image: container/watchtower
+    volumes:
+      - /varrun/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=15
+
+    command: contador
